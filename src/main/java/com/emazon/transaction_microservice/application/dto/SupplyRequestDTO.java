@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SupplyDTORequest {
+public class SupplyRequestDTO {
 
     @NotBlank(message = "El nombre del artículo es obligatorio")
     private String articleName;

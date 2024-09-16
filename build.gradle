@@ -23,6 +23,12 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.5" // Versión recomendada para Spring Boot 3.x
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -51,7 +57,6 @@ dependencies {
 
 	// Dependencia adicional para Java 17 y Spring Boot 3
 	implementation 'jakarta.annotation:jakarta.annotation-api'
-
 
 }
 

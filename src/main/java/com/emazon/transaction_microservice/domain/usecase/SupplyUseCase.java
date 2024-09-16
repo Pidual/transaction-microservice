@@ -10,6 +10,7 @@ import java.util.List;
 public class SupplyUseCase implements ISupplyServicePort {
 
     private final ISuppliesPersistencePort suppliesJpaAdapter;
+    
 
     public SupplyUseCase(ISuppliesPersistencePort suppliesPersistencePort) {
         this.suppliesJpaAdapter = suppliesPersistencePort;
@@ -29,13 +30,13 @@ public class SupplyUseCase implements ISupplyServicePort {
         }
 
         // Validar que la cantidad es positiva
-        if (supply.getQuantity() == null || supply.getQuantity() <= 0) {
+        if (supply.getQuantity() <= 0) {
             throw new IllegalArgumentException("La cantidad de suministro debe ser positiva.");
         }
 
         try {
             // Registrar el suministro en la base de datos local
-            suppliesPersistencePort.saveSupplies(supply);
+            suppliesJpaAdapter.saveSupplies(supply);
 
 
             // Actualizar el stock del artículo en el microservicio de stock FEIN FEIN FEIGN FEIGN
