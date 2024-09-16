@@ -1,4 +1,4 @@
-package com.emazon.transaction_microservice.infraestructure.output.jpa.entity;
+package com.emazon.transaction_microservice.infrastructure.output.jpa.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

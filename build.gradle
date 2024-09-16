@@ -46,6 +46,12 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
+	// Dependencia de Spring Cloud OpenFeign
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+	// Dependencia adicional para Java 17 y Spring Boot 3
+	implementation 'jakarta.annotation:jakarta.annotation-api'
+
 
 }
 

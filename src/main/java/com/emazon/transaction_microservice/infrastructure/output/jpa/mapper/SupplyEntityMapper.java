@@ -1,7 +1,8 @@
-package com.emazon.transaction_microservice.infraestructure.output.jpa.mapper;
+package com.emazon.transaction_microservice.infrastructure.output.jpa.mapper;
 
 import com.emazon.transaction_microservice.domain.model.Supply;
-import com.emazon.transaction_microservice.infraestructure.output.jpa.entity.SupplyEntity;
+import com.emazon.transaction_microservice.infrastructure.output.jpa.entity.SupplyEntity;
+import org.mapstruct.Mapper;
 
 @Mapper
 public interface SupplyEntityMapper {
