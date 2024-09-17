@@ -2,7 +2,7 @@ package com.emazon.transaction_microservice.infrastructure.configuration;
 
 
 import com.emazon.transaction_microservice.domain.api.ISupplyServicePort;
-import com.emazon.transaction_microservice.domain.spi.ISuppliesPersistencePort;
+import com.emazon.transaction_microservice.domain.spi.ISupplyPersistencePort;
 import com.emazon.transaction_microservice.domain.usecase.SupplyUseCase;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.adapter.SupplyJpaAdapter;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.mapper.SupplyEntityMapper;
@@ -18,20 +18,17 @@ public class BeanConfiguration {
     private final ISupplyRepository supplyRepository; //repo
     private final SupplyEntityMapper supplyEntityMapper; //mapper
 
-
-    // Inyectar suppliesPersistencePort en lugar de llamarlo directamente
-    private final ISuppliesPersistencePort suppliesPersistencePort;
-
     //Suply Configuration
     @Bean
     public ISupplyServicePort supplyServicePort() {
-        return new SupplyUseCase(suppliesPersistencePort);
+        return new SupplyUseCase(suppliesPersistencePort());
     }
 
     @Bean
-    public ISuppliesPersistencePort suppliesPersistencePort() {
+    public ISupplyPersistencePort suppliesPersistencePort() {
         return new SupplyJpaAdapter(supplyRepository, supplyEntityMapper);
     }
+
 
 
 

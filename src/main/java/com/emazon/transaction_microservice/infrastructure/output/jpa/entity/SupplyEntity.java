@@ -24,7 +24,7 @@ public class SupplyEntity {
     private Long id;                   // Identificador único de la transacción de suministro
 
     @Column(nullable = false)
-    private Long articleId;             // ID del artículo al que se le está aumentando el suministro
+    private String  articleName;             // ID del artículo al que se le está aumentando el suministro
 
     @Column(nullable = false)
     private int quantity;               // Cantidad de suministro añadida

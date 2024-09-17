@@ -13,16 +13,21 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class SupplyHandler implements ISuppliesHandler {
 
+    private final ISupplyServicePort supplyUseCase;
+    //private final IStockFeignClient stockServiceFeignClient;
+    private final SupplyMapper supplyMapper;
 
-    private final ISupplyServicePort supplyUseCase; //useCase
-    private final IStockFeignClient stockServiceFeignClient;  //Feing to call another microservice
-    private final SupplyMapper supplyMapper; //mapper
+
 
     @Override
     public void addSupplies(SupplyRequestDTO supplyDTO) {
-        supplyUseCase.addSuppliesToArticle(supplyMapper.toSupply(supplyDTO)); //Validates the article and saves the transacction
-        stockServiceFeignClient.updateArticleQuantity(supplyDTO.getArticleName(),supplyDTO.getQuantity());
+
+        supplyUseCase.addSuppliesToArticle(supplyMapper.toSupply(supplyDTO));
+
+
+        //stockServiceFeignClient.updateArticleQuantity("token idk where i got it",supplyDTO);
     }
+
 
 
 }

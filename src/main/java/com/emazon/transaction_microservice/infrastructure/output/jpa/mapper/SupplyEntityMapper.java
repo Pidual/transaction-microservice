@@ -4,11 +4,11 @@ import com.emazon.transaction_microservice.domain.model.Supply;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.entity.SupplyEntity;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface SupplyEntityMapper {
 
-    SupplyEntity toSuplyEntity(Supply supply);
+    SupplyEntity toEntity(Supply supply);
 
-    Supply toSuply(SupplyEntity supplyEntity);
+    Supply toSupply(SupplyEntity supplyEntity);
 
 }

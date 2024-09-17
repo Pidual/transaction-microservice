@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ISupplyRepository extends JpaRepository<SupplyEntity, Long> {
 
-    SupplyEntity findById(String name);
+    SupplyEntity findByArticleName(String name);
 
 
 }

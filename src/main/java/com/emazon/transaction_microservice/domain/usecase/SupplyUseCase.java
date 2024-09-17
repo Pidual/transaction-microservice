@@ -3,17 +3,17 @@ package com.emazon.transaction_microservice.domain.usecase;
 import com.emazon.transaction_microservice.domain.api.ISupplyServicePort;
 import com.emazon.transaction_microservice.domain.exceptions.DataBaseErrorJpa;
 import com.emazon.transaction_microservice.domain.model.Supply;
-import com.emazon.transaction_microservice.domain.spi.ISuppliesPersistencePort;
+import com.emazon.transaction_microservice.domain.spi.ISupplyPersistencePort;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
 
 public class SupplyUseCase implements ISupplyServicePort {
 
-    private final ISuppliesPersistencePort suppliesJpaAdapter;
+    private final ISupplyPersistencePort suppliesJpaAdapter;
     
 
-    public SupplyUseCase(ISuppliesPersistencePort suppliesPersistencePort) {
+    public SupplyUseCase(ISupplyPersistencePort suppliesPersistencePort) {
         this.suppliesJpaAdapter = suppliesPersistencePort;
     }
 
@@ -22,7 +22,7 @@ public class SupplyUseCase implements ISupplyServicePort {
     public void addSuppliesToArticle(Supply supply) {
         validateSupply(supply);
         try {
-            suppliesJpaAdapter.saveSuppliesTransaction(supply);  // Registrar el suministro en la base de datos local
+            suppliesJpaAdapter.saveSupplies(supply);  // Registrar el suministro en la base de datos local
         } catch (Exception e) {
             throw new DataBaseErrorJpa("Error al agregar suministros: " + e.getMessage()); // Si ocurre un error, lanzar una excepción para que la transacción se revierta
         }

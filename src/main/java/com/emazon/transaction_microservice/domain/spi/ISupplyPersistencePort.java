@@ -4,10 +4,9 @@ import com.emazon.transaction_microservice.domain.model.Supply;
 
 import java.util.List;
 
-public interface ISuppliesPersistencePort {
+public interface ISupplyPersistencePort {
 
-    void saveSuppliesTransaction(Supply supply);
+    void saveSupplies(Supply supply);
     List<Supply> getAllSupplies();
 
-    //void saveTransaccion();
 }
