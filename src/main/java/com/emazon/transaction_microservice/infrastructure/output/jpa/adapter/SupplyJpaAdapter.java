@@ -22,7 +22,7 @@ public class SupplyJpaAdapter implements ISuppliesPersistencePort {
 
 
     @Override
-    public void saveSupplies(Supply supply) {
+    public void saveSuppliesTransaction(Supply supply) {
 
     }
 

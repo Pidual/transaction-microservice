@@ -1,14 +1,12 @@
 package com.emazon.transaction_microservice.infrastructure.output.feign;
 
-
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "stock-service", url = "http://stock-service")
+@FeignClient(name = "stock-service", url = "http://localhost:8090") // Cambia el URL al de tu microservicio real
 public interface IStockFeignClient {
 
-    @PutMapping("/api/articles/{id}/quantity")
-    void updateArticleQuantity(@PathVariable("id") Long articleId, @RequestParam("quantity") Integer quantity);
+    @PostMapping("/stock/update/{articleId}/{quantity}")
+    void updateArticleQuantity(@PathVariable("articleId") String articleName, @PathVariable("quantity") Integer quantity);
 }

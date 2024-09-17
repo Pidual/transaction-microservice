@@ -6,22 +6,78 @@ import java.util.List;
 
 public class Sales {
 
-    private Long id;                    // ID de la venta (único)
-    private Long customerId;             // ID del cliente que realizó la compra
-    private LocalDateTime saleDate;      // Fecha y hora de la venta
-    private BigDecimal totalAmount;      // Monto total de la venta
-    private List<SaleItem> items;        // Lista de artículos vendidos
-    private String paymentMethod;        // Método de pago (tarjeta, efectivo, etc.)
-    private String status;               // Estado de la venta (completada, fallida, pendiente)
-    private String transactionId;        // ID de la transacción de pago
-    private Long userId;                 // Usuario que procesó la venta (por ejemplo, el admin)
+    private Long id;  // Identificador de la venta
+    private String clientEmail;  // Correo del cliente
+    private List<SaleItem> items;  // Lista de artículos vendidos
+    private LocalDateTime saleDate;  // Fecha de la venta
+    private BigDecimal totalCost;  // Costo total de la venta
+    private String status;  // Estado de la venta (completada, fallida, etc.)
+    private LocalDateTime lastModifiedDate;  // Fecha de última modificación de la venta
 
 
-    public BigDecimal calculateTotalAmount() {
-//        return items.stream()
-//                .map(SaleItem::getTotalPrice)
-//                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    public Sales(Long id, String clientEmail, List<SaleItem> items, LocalDateTime saleDate, BigDecimal totalCost, String status, LocalDateTime lastModifiedDate) {
+        this.id = id;
+        this.clientEmail = clientEmail;
+        this.items = items;
+        this.saleDate = saleDate;
+        this.totalCost = totalCost;
+        this.status = status;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
+    public LocalDateTime getLastModifiedDate() {
+        return lastModifiedDate;
+    }
 
+    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public BigDecimal getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public LocalDateTime getSaleDate() {
+        return saleDate;
+    }
+
+    public void setSaleDate(LocalDateTime saleDate) {
+        this.saleDate = saleDate;
+    }
+
+    public List<SaleItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<SaleItem> items) {
+        this.items = items;
+    }
+
+    public String getClientEmail() {
+        return clientEmail;
+    }
+
+    public void setClientEmail(String clientEmail) {
+        this.clientEmail = clientEmail;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

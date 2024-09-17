@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ISuppliesPersistencePort {
 
-    void saveSupplies(Supply supply);
+    void saveSuppliesTransaction(Supply supply);
     List<Supply> getAllSupplies();
 
     //void saveTransaccion();
