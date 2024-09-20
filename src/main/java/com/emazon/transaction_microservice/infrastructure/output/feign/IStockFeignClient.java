@@ -15,8 +15,5 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface IStockFeignClient {
 
     @PatchMapping("/add-stock")
-    void updateArticleQuantity(
-            @RequestHeader("Authorization") String token,
-            @RequestBody SupplyRequestDTO request
-    );
+    void updateArticleQuantity(@RequestHeader("Authorization") String token, @RequestBody SupplyRequestDTO request);
 }

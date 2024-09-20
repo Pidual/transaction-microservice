@@ -5,27 +5,26 @@ import java.time.LocalDateTime;
 
 public class Supply {
 
-    private Long id; // id de la transaccion
-    private Long articleId;
+    private String articleName;
     private int quantity;
-    private LocalDateTime fechaTransaccion;
-    private Long usuarioId;
+    private LocalDateTime supplyDate;
+    private String userEmail;
 
-    public Supply(Long id, Long usuarioId, LocalDateTime fechaTransaccion, int quantity, Long articleId) {
-        this.id = id;
-        this.usuarioId = usuarioId;
-        this.fechaTransaccion = fechaTransaccion;
+
+    public Supply(String articleName, int quantity, String userEmail) {
+        this.articleName = articleName;
         this.quantity = quantity;
-        this.articleId = articleId;
+        this.supplyDate = LocalDateTime.now();
+        this.userEmail = userEmail;
     }
 
 
-    public Long getId() {
-        return id;
+    public String getArticleName() {
+        return articleName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setArticleName(String articleName) {
+        this.articleName = articleName;
     }
 
     public int getQuantity() {
@@ -36,27 +35,19 @@ public class Supply {
         this.quantity = quantity;
     }
 
-    public Long getArticleId() {
-        return articleId;
+    public LocalDateTime getSupplyDate() {
+        return supplyDate;
     }
 
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
+    public void setSupplyDate(LocalDateTime supplyDate) {
+        this.supplyDate = supplyDate;
     }
 
-    public LocalDateTime getFechaTransaccion() {
-        return fechaTransaccion;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setFechaTransaccion(LocalDateTime fechaTransaccion) {
-        this.fechaTransaccion = fechaTransaccion;
-    }
-
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

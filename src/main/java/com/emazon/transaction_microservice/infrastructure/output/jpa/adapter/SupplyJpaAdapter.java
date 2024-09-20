@@ -3,6 +3,7 @@ package com.emazon.transaction_microservice.infrastructure.output.jpa.adapter;
 
 import com.emazon.transaction_microservice.domain.model.Supply;
 import com.emazon.transaction_microservice.domain.spi.ISupplyPersistencePort;
+import com.emazon.transaction_microservice.infrastructure.output.jpa.entity.SupplyEntity;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.mapper.SupplyEntityMapper;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.repository.ISupplyRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,9 @@ public class SupplyJpaAdapter implements ISupplyPersistencePort {
 
     @Override
     public void saveSupplies(Supply supply) {
-        jpaRepository.save(supplyEntityMapper.toEntity(supply));
+        SupplyEntity supplyEntity = supplyEntityMapper.toEntity(supply);
+
+        jpaRepository.save(supplyEntity);
 
     }
 

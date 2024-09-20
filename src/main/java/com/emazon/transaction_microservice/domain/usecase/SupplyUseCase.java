@@ -46,8 +46,8 @@ public class SupplyUseCase implements ISupplyServicePort {
         }
 
         // Validar que el ID del artículo es válido
-        if (supply.getArticleId() == null || supply.getArticleId() <= 0) {
-            throw new IllegalArgumentException("El ID del artículo es inválido.");
+        if (supply.getArticleName().isBlank() || supply.getArticleName().isEmpty()) {
+            throw new IllegalArgumentException("El Nombre del artículo es inválido.");
         }
 
         // Validar que la cantidad es positiva

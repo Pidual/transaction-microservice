@@ -30,15 +30,15 @@ dependencyManagement {
 }
 
 dependencies {
+	// Lombok
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
 	// Spring Boot Starters
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	// Lombok
-	compileOnly 'org.projectlombok:lombok:1.18.24'
-	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
 	// MapStruct
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
@@ -46,6 +46,8 @@ dependencies {
 
 	// Spring Cloud OpenFeign
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	implementation 'io.github.openfeign:feign-httpclient:13.3' //A[PACJE1 1!!!
+
 
 	// Additional dependency for Java 17 and Spring Boot 3
 	implementation 'jakarta.annotation:jakarta.annotation-api'
@@ -75,8 +77,6 @@ dependencies {
 	// MySQL Connector for runtime
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
-	// Spring Boot DevTools for development
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {
