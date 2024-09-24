@@ -23,30 +23,64 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.3"
+	}
+}
+
 dependencies {
+	// Lombok
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+	// Spring Boot Starters
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	// Dependencia de MapStruct
+	// MapStruct
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-
-	// Procesador de anotaciones para MapStruct
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
-	// Si utilizas Lombok con MapStruct
-	compileOnly 'org.projectlombok:lombok:1.18.24'
-	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	// Spring Cloud OpenFeign
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	implementation 'io.github.openfeign:feign-httpclient:13.3'
+	implementation 'io.github.openfeign:feign-jackson:13.3'
+
+	// Jakarta Annotation API for Java 17 and Spring Boot 3
+	implementation 'jakarta.annotation:jakarta.annotation-api'
+
+	// SpringDoc OpenAPI for API documentation
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	// Spring Security
+	implementation 'org.springframework.security:spring-security-config'
+	implementation 'org.springframework.security:spring-security-web'
 
 
+
+	// Spring Boot Actuator for monitoring
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	// JWT for token authentication
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'  // If using JSON for tokens
+
+	// JUnit 5 for testing
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+
+	// Mockito for mocking in tests
+	testImplementation 'org.mockito:mockito-core:4.11.0'
+
+	// Spring Boot Starter Test (already includes JUnit 5 and Mockito)
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// MySQL Connector for runtime
+	runtimeOnly 'com.mysql:mysql-connector-j'
 }
 
 tasks.named('test') {

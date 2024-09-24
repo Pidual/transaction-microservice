@@ -1,31 +1,58 @@
 package com.emazon.transaction_microservice.domain.usecase;
 
 import com.emazon.transaction_microservice.domain.api.ISupplyServicePort;
+import com.emazon.transaction_microservice.domain.exceptions.DataBaseErrorJpa;
 import com.emazon.transaction_microservice.domain.model.Supply;
-import com.emazon.transaction_microservice.domain.spi.ISuppliesPersistencePort;
+import com.emazon.transaction_microservice.domain.spi.ISupplyPersistencePort;
+import jakarta.transaction.Transactional;
+
+import java.util.List;
 
 public class SupplyUseCase implements ISupplyServicePort {
 
-    private final ISuppliesPersistencePort suppliesJpaAdapter;
+    private final ISupplyPersistencePort suppliesJpaAdapter;
+    
 
-    public SupplyUseCase(ISuppliesPersistencePort suppliesPersistencePort) {
+    public SupplyUseCase(ISupplyPersistencePort suppliesPersistencePort) {
         this.suppliesJpaAdapter = suppliesPersistencePort;
     }
 
-
     @Override
-    public void addSupplies() {
-        // validar que los suministros esten bien (metodo)
-
-        // si el suministro es esta null o algo raro tirar excepciones
-
-        //
-
-        // TODO document why this method is empty
+    @Transactional
+    public void addSuppliesToArticle(Supply supply) {
+        validateSupply(supply);
+        try {
+            suppliesJpaAdapter.saveSupplies(supply);  // Registrar el suministro en la base de datos local
+        } catch (Exception e) {
+            throw new DataBaseErrorJpa("Error al agregar suministros: " + e.getMessage()); // Si ocurre un error, lanzar una excepción para que la transacción se revierta
+        }
     }
 
+
+    /**
+     * i do this for debugging purpuses
+     */
     @Override
-    public Supply getSupplies() {
-        return null;
+    public List<Supply> getSupplies() {
+        return suppliesJpaAdapter.getAllSupplies();  // Implementación para obtener la lista de suministros si es necesario
+    }
+
+
+
+    private void validateSupply(Supply supply) {
+        // Validar que el suministro no sea null
+        if (supply == null) {
+            throw new IllegalArgumentException("El suministro no puede ser null.");
+        }
+
+        // Validar que el ID del artículo es válido
+        if (supply.getArticleName().isBlank() || supply.getArticleName().isEmpty()) {
+            throw new IllegalArgumentException("El Nombre del artículo es inválido.");
+        }
+
+        // Validar que la cantidad es positiva
+        if (supply.getQuantity() <= 0) {
+            throw new IllegalArgumentException("La cantidad de suministro debe ser positiva.");
+        }
     }
 }

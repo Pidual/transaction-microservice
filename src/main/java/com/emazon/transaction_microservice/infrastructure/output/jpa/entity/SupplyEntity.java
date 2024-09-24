@@ -1,4 +1,4 @@
-package com.emazon.transaction_microservice.infraestructure.output.jpa.entity;
+package com.emazon.transaction_microservice.infrastructure.output.jpa.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -21,17 +21,17 @@ public class SupplyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;                   // Identificador único de la transacción de suministro
+    private Long id;
 
     @Column(nullable = false)
-    private Long articleId;             // ID del artículo al que se le está aumentando el suministro
+    private String  articleName;
 
     @Column(nullable = false)
-    private int quantity;               // Cantidad de suministro añadida
+    private int quantity;
 
     @Column(nullable = false)
-    private LocalDateTime supplyDate;   // Fecha en la que se realizó el suministro
+    private LocalDateTime supplyDate;
 
     @Column(nullable = false)
-    private Long userId;                // ID del usuario (aux_bodega) que realizó el suministro
+    private String userEmail;
 }
