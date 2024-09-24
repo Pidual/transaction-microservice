@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
         url = "http://localhost:8090/articles",
         configuration = FeignClientConfig.class
 )
-public interface IStockFeignClient {
+public interface IStockServicePort {
 
     @PatchMapping("/add-stock")
     void updateArticleQuantity(@RequestHeader("Authorization") String token, @RequestBody SupplyRequestDTO request);
+
 }

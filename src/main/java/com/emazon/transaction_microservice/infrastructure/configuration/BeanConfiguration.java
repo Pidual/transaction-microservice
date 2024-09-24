@@ -7,7 +7,7 @@ import com.emazon.transaction_microservice.application.mapper.SupplyMapper;
 import com.emazon.transaction_microservice.domain.api.ISupplyServicePort;
 import com.emazon.transaction_microservice.domain.spi.ISupplyPersistencePort;
 import com.emazon.transaction_microservice.domain.usecase.SupplyUseCase;
-import com.emazon.transaction_microservice.infrastructure.output.feign.IStockFeignClient;
+import com.emazon.transaction_microservice.infrastructure.output.feign.IStockServicePort;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.adapter.SupplyJpaAdapter;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.mapper.SupplyEntityMapper;
 import com.emazon.transaction_microservice.infrastructure.output.jpa.repository.ISupplyRepository;
@@ -23,7 +23,7 @@ public class BeanConfiguration {
     private final ISupplyRepository supplyRepository; //repo
     private final SupplyEntityMapper supplyEntityMapper; //mapper
 
-    private final IStockFeignClient stockServiceFeignClient;
+    private final IStockServicePort stockServiceFeignClient;
     private final SupplyMapper supplyMapper;
     private final JwtService jwtService;
 
